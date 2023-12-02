@@ -93,10 +93,22 @@ var totalChange = 0;
 for (var i = 0; i < finances.length; i++) {
   // Calculate the total Profit/Losses
   totalProfitLosses += finances[i][1];
+
+  // Calculate change
+  if (i > 0) {
+    var change = finances[i][1] - finances[i - 1][1];
+
+    // Change for average calculation
+    totalChange += change;
+  }
 }
+
+// Calculate average change
+var averageChange = totalChange / (finances.length - 1);
 
 // Output the results
 console.log('Financial Analysis');
 console.log('-----------------------------------------');
+console.log('Average Change: £ ' + averageChange.toFixed(2)); //£ -2315.12
 console.log('Total Months: ' + finances.length); //86
 console.log('Total: £ ' + totalProfitLosses); // 38382578

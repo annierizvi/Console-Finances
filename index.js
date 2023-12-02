@@ -89,6 +89,10 @@ var finances = [
 
 var totalProfitLosses = 0;
 var totalChange = 0;
+var greatestIncrease = 0;
+var greatestDecrease = 0;
+var greatestIncreaseMonth = '';
+var greatestDecreaseMonth = '';
 
 for (var i = 0; i < finances.length; i++) {
   // Calculate the total Profit/Losses
@@ -97,9 +101,20 @@ for (var i = 0; i < finances.length; i++) {
   // Calculate change
   if (i > 0) {
     var change = finances[i][1] - finances[i - 1][1];
-
     // Change for average calculation
     totalChange += change;
+
+    // Check and update greatest increase in profits
+    if (change > greatestIncrease) {
+      greatestIncrease = change;
+      greatestIncreaseMonth = finances[i][0];
+    }
+
+    // Check and update greatest decrease in losses
+    if (change < greatestDecrease) {
+      greatestDecrease = change;
+      greatestDecreaseMonth = finances[i][0];
+    }
   }
 }
 
@@ -109,6 +124,20 @@ var averageChange = totalChange / (finances.length - 1);
 // Output the results
 console.log('Financial Analysis');
 console.log('-----------------------------------------');
-console.log('Average Change: £ ' + averageChange.toFixed(2)); //£ -2315.12
 console.log('Total Months: ' + finances.length); //86
 console.log('Total: £ ' + totalProfitLosses); // 38382578
+console.log('Average Change: £ ' + averageChange.toFixed(2)); //£ -2315.12
+console.log(
+  'Greatest Increase in Profits: ' +
+    greatestIncreaseMonth +
+    ' (£ ' +
+    greatestIncrease +
+    ')'
+); //  Feb-2012 (£ 1926159)
+console.log(
+  'Greatest Decrease in Losses: ' +
+    greatestDecreaseMonth +
+    ' (£ ' +
+    greatestDecrease +
+    ')'
+); // Sep-2013 (£ -2196167)

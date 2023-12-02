@@ -87,8 +87,16 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
-console.log('Total Months: ' + finances.length) //86
-console.log('Total: ') 
-console.log(finances[0]);
-var months = finances[1];
-console.log(months);
+var totalProfitLosses = 0;
+var totalChange = 0;
+
+for (var i = 0; i < finances.length; i++) {
+  // Calculate the total Profit/Losses
+  totalProfitLosses += finances[i][1];
+}
+
+// Output the results
+console.log('Financial Analysis');
+console.log('-----------------------------------------');
+console.log('Total Months: ' + finances.length); //86
+console.log('Total: £ ' + totalProfitLosses); // 38382578

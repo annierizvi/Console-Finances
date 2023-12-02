@@ -48,3 +48,7 @@ The output of the analysis will be displayed in the console and includes:
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
+
+## Screenshot
+
+![screenshot of the console output ](image.png)
